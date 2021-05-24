@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .row-input {
+            margin-bottom: 10px;
+            display: flex;
+        }
+
+        span.label {
+            display: inline-block;
+            width: 100px;
+        }
+
+        .row-button {
+            width: 300px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .row-button > input:first-child {
+            margin-right: 10px;
+        }
+
+        .container {
+            border: 1px solid rgba(0, 0, 0, .11);
+            padding: 10px;
+            width: 500px
+        }
+
+        .controls-item {
+            display: inline-block;
+        }
+
+        .btn {
+            margin: 1px;
+        }
+    </style>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>-->
+    
+
+    <script src="user.js" defer></script>
+
+  </head>
+
+  <body>
+    
+    <h1>Registrasi Peserta</h1>
+    <!-- Pembuatan Form Registrasi-->
+    <form name="userInput" onsubmit="event.preventDefault(); onSaveForm()">
+
+      <!-- Input Nama -->
+      <div class="row-input">
+        <span class="label">Name</span>
+        <input type="text" name="name" />
+        <input type="hidden" name="idx" />
+      </div>
+
+      <!-- Gender -->
+      <div class="row-input">
+        <span class="label">Gender</span>
+        <input type="radio" name="gender" value="M" /> Male
+        <input type="radio" name="gender" value="L" /> Female
+      </div>
+
+      <!-- Date Of Birth -->
+      <div class="row-input">
+        <span class="label">DOB</span>
+        <input type="date" name="dob" />
+      </div>
+
+      <!-- Religion -->
+      <div class="row-input">
+        <span class="label">Religion</span>
+        <select name="religion">
+          <option value="">-- Please Select --</option>
+          <option value="B">Budha</option>
+          <option value="I">Islam</option>
+          <option value="K">Kristen</option>
+        </select>
+      </div>
+
+      <!-- Address -->
+      <div class="row-input">
+        <span class="label">Address</span>
+        <textarea name="address" cols="22" rows="10"></textarea>
+      </div>
+
+      <!-- Button -->
+      <div class="row-button">
+        <input type="submit" value="Save" />
+        <input type="reset" value="Reset" />
+      </div>
+    </form>
+
+    <hr />
+
+    <!-- Search Data Form -->
+    <form name="searchByName" onsubmit="event.preventDefault(); searchNameForm()">
+
+        <!--Search By Name -->
+        <div class="row-input">
+            <span class="label">Search By Name : </span>
+            <input type="text" name="searchname" />
+            <input type="submit" value="Search" />
+        </div>
+
+    </form>
+    
+
+    <!--Search By Religion -->
+    <form name="searchByReligion" onsubmit="event.preventDefault(); searchReligionForm()">
+        <div class="row-input">
+            <span class="label">Search By Religion : </span>
+            <select name="searchreligion">
+                <option value="">-- Please Select --</option>
+                <option value="B">Budha</option>
+                <option value="I">Islam</option>
+                <option value="K">Kristen</option>
+            </select>
+            <input type="submit" value="Search" />
+        </div>
+    </form>
+    
+
+    <!--Search By Address -->
+    <form name="searchByAddress" onsubmit="event.preventDefault(); searchAddressForm()">
+        <div class="row-input">
+            <span class="label">Search By Address : </span>
+            <input type="text" name="searchaddress" />
+            <input type="submit" value="Search" />
+        </div>
+    </form>
+    
+    
+    <!-- Table Data Result -->
+    <table class="userList" width="500px" border="1">
+      <thead>
+        <tr>
+          <th width="40px">No</th>
+          <th>Name</th>
+          <th width="80px">Gender</th>
+          <th width="50px">Age</th>
+          <th width="100px">Religion</th>
+          <th width="100px">Address</th>
+          <th width="150px">Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div class="container">
+        <div id="pagination-wrapper"></div>
+    </div>
+
+  </body>
+</html>
